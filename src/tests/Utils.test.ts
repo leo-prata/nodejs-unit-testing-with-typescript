@@ -4,7 +4,7 @@ describe('utils test suite', () => {
 	describe('StringUtils tests', () => {
 		let sut: StringUtils;
 		beforeEach(() => {
-			const sut = new StringUtils();
+			sut = new StringUtils();
 		});
 
 		afterEach(() => {
@@ -15,6 +15,23 @@ describe('utils test suite', () => {
 			const actual = sut.toUpperCase('aaa');
 
 			expect(actual).toBe('ABC');
+		});
+
+		it.only('should return error on invalid input - arrow func', () => {
+			expect(() => {
+				sut.toUpperCase('');
+			}).toThrowError('Invalid input');
+		});
+
+		it.only('should return error on invalid input - try/catch', (done) => {
+			try {
+				sut.toUpperCase('');
+				done('GetStringInfo should throw error for invalid argument');
+			} catch (error) {
+				expect(error).toBeInstanceOf(Error);
+				expect(error).toHaveProperty('message', 'Invalid input');
+				done();
+			}
 		});
 	});
 
