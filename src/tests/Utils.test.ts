@@ -13,17 +13,16 @@ describe('utils test suite', () => {
 		});
 		it('should return correct uppercase', () => {
 			const actual = sut.toUpperCase('aaa');
-
-			expect(actual).toBe('ABC');
+			expect(actual).toBe('AAA');
 		});
 
-		it.only('should return error on invalid input - arrow func', () => {
+		it('should return error on invalid input - arrow func', () => {
 			expect(() => {
 				sut.toUpperCase('');
 			}).toThrowError('Invalid input');
 		});
 
-		it.only('should return error on invalid input - try/catch', (done) => {
+		it('should return error on invalid input - try/catch', (done) => {
 			try {
 				sut.toUpperCase('');
 				done('GetStringInfo should throw error for invalid argument');
