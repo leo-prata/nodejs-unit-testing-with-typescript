@@ -44,4 +44,10 @@ describe('password_checker test suite', () => {
 		expect(actual.valid).toBe(true);
 		expect(actual.reasons).not.toContain(PasswordErrors.NO_LOWERCASE);
 	});
+
+	test('pwd with no errors is valid', () => {
+		const actual = sut.checkPassword('1234Fsdfdsfsf');
+		expect(actual.valid).toBe(true);
+		expect(actual.reasons).toHaveLength(0);
+	});
 });
